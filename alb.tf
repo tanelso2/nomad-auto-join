@@ -1,7 +1,7 @@
 # Create a new load balancer
-resource "aws_alb" "external" {
+ resource "aws_alb" "external" {
   name            = "${var.namespace}-external"
-  internal        = false
+  internal        = true
   security_groups = ["${aws_security_group.default.id}"]
   subnets         = ["${aws_subnet.default.*.id}"]
 }

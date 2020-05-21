@@ -39,12 +39,13 @@ data "template_file" "startup" {
 resource "aws_launch_configuration" "default" {
   name = "${var.namespace}"
 
-  image_id      = "${data.aws_ami.ubuntu-1604.id}"
+  image_id      = "${data.aws_ami.ubuntu-2004.id}"
   instance_type = "${var.instance_type}"
   key_name      = "${var.key_name}"
 
   iam_instance_profile = "${aws_iam_instance_profile.consul-join.name}"
   security_groups      = ["${var.security_group}"]
+  associate_public_ip_address = false
 
   user_data = "${data.template_file.startup.rendered}"
 }

@@ -1,10 +1,10 @@
 # Get the list of official Canonical Ubuntu 16.04 AMIs
-data "aws_ami" "ubuntu-1604" {
+data "aws_ami" "ubuntu-2004" {
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
   }
 
   filter {
@@ -25,7 +25,7 @@ data "template_file" "startup" {
 }
 
 resource "aws_instance" "ssh_host" {
-  ami           = "${data.aws_ami.ubuntu-1604.id}"
+  ami           = "${data.aws_ami.ubuntu-2004.id}"
   instance_type = "t2.nano"
   key_name      = "${aws_key_pair.nomad.id}"
 

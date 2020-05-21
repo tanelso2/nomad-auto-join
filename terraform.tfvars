@@ -6,7 +6,7 @@ consul_join_tag_key = "nomad_consul"
 
 consul_join_tag_value = "default"
 
-nomad_version = "0.5.6"
+nomad_version = "0.11.2"
 
 nomad_servers = 3
 
